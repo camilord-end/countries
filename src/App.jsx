@@ -34,7 +34,7 @@ function App() {
       <Tittle text="Country Info DB" />
       <Filter handler={handleInputChange} value={input} />
       <div className="results-container">
-        <h2 className="results-title">Results: </h2>
+        <h2 className="results-tittle">Results: </h2>
         {filteredData().length < 10 && filteredData().length > 1
           ? filteredData().map((country) => {
               return (
@@ -59,7 +59,7 @@ function App() {
                 />
               );
             })
-          : "Search country names (english)"}
+          : <p id="results-legend">Search for country names in english!</p>}
       </div>
     </div>
   );
