@@ -1,0 +1,15 @@
+.filter-container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2.2em;
+  font-weight: 700;
+}
+
+#input-filter {
+  border-radius: 10px;
+  font-size: 0.7em;
+  margin: 10px;
+  padding-left: 10px;
+}

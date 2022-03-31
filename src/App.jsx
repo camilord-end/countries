@@ -5,6 +5,8 @@ import { Filter } from "./components/Filter";
 import { CountryDetails } from "./components/CountryDetails";
 import { CountryList } from "./components/CountryList";
 
+import "../styles/App.css"
+
 function App() {
   const [input, setInput] = useState("");
   const [countries, setCountries] = useState([]);
