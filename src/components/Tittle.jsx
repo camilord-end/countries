@@ -1,4 +1,4 @@
-import "../../styles/Tittle.css"
+import "../styles/Tittle.css"
 
 export const Tittle = ({ text }) => {
   return (

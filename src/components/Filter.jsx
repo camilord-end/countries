@@ -1,4 +1,4 @@
-import "../../styles/Filter.css"
+import "../styles/Filter.css"
 
 export const Filter = ({ handler, value }) => {
   return (
