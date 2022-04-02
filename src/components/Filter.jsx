@@ -8,7 +8,7 @@ export const Filter = ({ handler, value }) => {
         id="input-filter"
         type="text"
         onChange={handler}
-        placeholder="type country name to filter"
+        placeholder="type country name in english"
         value={value}
       />
     </div>

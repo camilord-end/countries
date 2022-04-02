@@ -1,3 +1,5 @@
+import "../styles/CountryTittle.css"
+
 export const CountryTittle = ({ name, flag }) => {
   return (
     <div className="country-tittle">

@@ -1,5 +1,10 @@
-export const Detail = ({text,detail}) => {
+import "../styles/Detail.css"
+
+export const Detail = ({ text, detail }) => {
   return (
-    <p>{text}: {detail}</p>
-  )
-}
+    <div className="detail-container">
+      <div className="text">{text}:</div>
+      <div className="detail">{detail}</div>
+    </div>
+  );
+};

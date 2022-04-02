@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Detail } from "./Detail.jsx";
 
+import "../styles/Weather.css";
+
 export const Weather = ({ city }) => {
   const [weatherDetails, setWeatherDetails] = useState(null);
 
@@ -27,18 +29,24 @@ export const Weather = ({ city }) => {
 
   return (
     <div className="weather-container">
-      <h3>Weather</h3>
-      <img
-        src={`http://openweathermap.org/img/wn/${weatherDetails.icon}@2x.png`}
-        alt={weatherDetails.description}
-      />
-      <Detail text="Description" detail={weatherDetails.description} />
-      <Detail text="Humidity" detail={weatherDetails.humidity + "%"} />
-      <Detail
-        text="Temperature"
-        detail={Math.round(weatherDetails.temp - 273) + " C°"}
-      />
-      <Detail text="Wind speed" detail={weatherDetails.wind + " m/s"} />
+      <div className="weather-tittle">
+        <p id="tittle">Weather</p>
+      </div>
+      <div className="weather-image">
+        <img
+          src={`http://openweathermap.org/img/wn/${weatherDetails.icon}@2x.png`}
+          alt={weatherDetails.description}
+        />
+      </div>
+      <div className="weather-details">
+        <Detail text="Description" detail={weatherDetails.description} />
+        <Detail text="Humidity" detail={weatherDetails.humidity + "%"} />
+        <Detail
+          text="Temperature"
+          detail={Math.round(weatherDetails.temp - 273) + " C°"}
+        />
+        <Detail text="Wind speed" detail={weatherDetails.wind + " m/s"} />
+      </div>
     </div>
   );
 };

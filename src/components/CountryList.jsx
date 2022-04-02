@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CountryDetails } from "./CountryDetails";
+import "../styles/CountryList.css";
 
 export const CountryList = ({ data }) => {
   const [displayDetails, setDisplayDetails] = useState(false);
@@ -10,11 +11,15 @@ export const CountryList = ({ data }) => {
 
   return (
     <>
-      <p className="item">
-        {data.name.common}
-        <button onClick={handleDisplay}>Show details</button>
-      </p>
-      <div className="country-details">
+      <div className="country-item">
+        <div className="list-text">{data.name.common}</div>
+        <div className="list-button">
+          <button className="list-button" onClick={handleDisplay}>
+            {displayDetails ? "Hide details" : "Show Details"}
+          </button>
+        </div>
+      </div>
+      <div className="country-details-container">
         {displayDetails && (
           <CountryDetails
             key={data.ccn3}

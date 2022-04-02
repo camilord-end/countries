@@ -59,7 +59,7 @@ function App() {
                 />
               );
             })
-          : <p id="results-legend">Search for country names in english!</p>}
+          : <p id="results-legend">Be more specific!</p>}
       </div>
     </div>
   );
