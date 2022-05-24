@@ -19,7 +19,7 @@ function App() {
     axios.get("https://restcountries.com/v3.1/all").then((response) => {
       setCountries(response.data);
     });
-  }, []);
+  }, [countries]);
 
   const filteredData = () => {
     return countries.filter((country) => {
@@ -59,7 +59,7 @@ function App() {
                 />
               );
             })
-          : <p id="results-legend">Be more specific!</p>}
+          : <p id="results-legend">Be more specific 😀</p>}
       </div>
     </div>
   );
