@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CountryDetails } from "./CountryDetails";
 import "../styles/CountryList.css";
+import { FaPlus, FaMinus } from "react-icons/fa"
 
 export const CountryList = ({ data }) => {
   const [displayDetails, setDisplayDetails] = useState(false);
@@ -13,11 +14,9 @@ export const CountryList = ({ data }) => {
     <>
       <div className="country-item">
         <div className="list-text">{data.name.common}</div>
-        <div className="list-button">
           <button className="list-button" onClick={handleDisplay}>
-            {displayDetails ? "Hide details" : "Show Details"}
+            {displayDetails ? <FaMinus /> : <FaPlus />}
           </button>
-        </div>
       </div>
       <div className="country-details-container">
         {displayDetails && (
