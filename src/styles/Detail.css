@@ -8,6 +8,18 @@
   border-radius: 5px;
 }
 
+.detail-container:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.languages-container {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.languages-container:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
 .text {
   font-weight: bold;
 }
