@@ -11,3 +11,13 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.list-button {
+  width: 13.33px;
+  height: 13.33px;
+  align-self: center;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 1);
+  background-color: inherit;
+}
