@@ -1,68 +1,82 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { Tittle } from "./components/Tittle";
-import { Filter } from "./components/Filter";
-import { CountryDetails } from "./components/CountryDetails";
-import { CountryList } from "./components/CountryList";
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Tittle } from './components/Tittle'
+import { Filter } from './components/Filter'
+import { CountryDetails } from './components/CountryDetails'
+import { CountryList } from './components/CountryList'
 
-import "./styles/App.css"
+import './styles/App.css'
 
 function App() {
-  const [input, setInput] = useState("");
-  const [countries, setCountries] = useState([]);
+  const [input, setInput] = useState('')
+  const [countries, setCountries] = useState([])
 
   const handleInputChange = (event) => {
-    setInput(event.target.value);
-  };
+    setInput(event.target.value)
+  }
 
   useEffect(() => {
-    axios.get("https://restcountries.com/v3.1/all").then((response) => {
-      setCountries(response.data);
-    });
-  }, [countries]);
+    axios.get('https://restcountries.com/v3.1/all').then((response) => {
+      setCountries(response.data)
+    })
+  }, [input])
 
   const filteredData = () => {
     return countries.filter((country) => {
       if (country.name.common.toLowerCase().includes(input.toLowerCase())) {
-        return true;
+        return true
       }
-    });
-  };
+    })
+  }
 
   return (
-    <div className="app-container">
-      <Tittle text="Country Info DB" />
+    <div className='app-container'>
+      <Tittle text='Country Info DB' />
       <Filter handler={handleInputChange} value={input} />
-      <div className="results-container">
-        <h2 className="results-tittle">Results: </h2>
-        {filteredData().length < 10 && filteredData().length > 1
-          ? filteredData().map((country) => {
-              return (
-                <div key={country.name.common} className="country">
-                  <CountryList data={country} />
-                </div>
-              );
-            })
-          : filteredData().length === 1
-          ? filteredData().map((country) => {
+      <div className='results-container'>
+        <h2 className='results-tittle'>Results: </h2>
+        {filteredData().length < 10 && filteredData().length > 1 ? (
+          filteredData().map((country) => {
+            return (
+              <div key={country.name.common} className='country'>
+                <CountryList data={country} />
+              </div>
+            )
+          })
+        ) : filteredData().length === 1 ? (
+          filteredData().map(
+            ({
+              ccn3,
+              name,
+              capital,
+              languages,
+              flag,
+              region,
+              subregion,
+              area,
+              population
+            }) => {
               return (
                 <CountryDetails
-                  key={country.ccn3}
-                  name={country.name.common}
-                  capital={country.capital}
-                  languages={country.languages}
-                  flag={country.flag}
-                  region={country.region}
-                  subregion={country.subregion}
-                  area={country.area}
-                  population={country.population}
+                  key={ccn3}
+                  name={name.common}
+                  capital={capital}
+                  languages={languages}
+                  flag={flag}
+                  region={region}
+                  subregion={subregion}
+                  area={area}
+                  population={population}
                 />
-              );
-            })
-          : <p id="results-legend">Be more specific 😀</p>}
+              )
+            }
+          )
+        ) : (
+          <p id='results-legend'>Be more specific 😀</p>
+        )}
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

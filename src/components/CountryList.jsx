@@ -1,39 +1,52 @@
-import { useState } from "react";
-import { CountryDetails } from "./CountryDetails";
-import "../styles/CountryList.css";
-import { FaPlus, FaMinus } from "react-icons/fa"
+import { useState } from 'react'
+import { CountryDetails } from './CountryDetails'
+import '../styles/CountryList.css'
+import { FaPlus, FaMinus } from 'react-icons/fa'
 
-export const CountryList = ({ data }) => {
-  const [displayDetails, setDisplayDetails] = useState(false);
+export const CountryList = ({
+  data: {
+    name,
+    ccn3,
+    capital,
+    languages,
+    flag,
+    region,
+    subregion,
+    area,
+    population,
+    borders
+  }
+}) => {
+  const [displayDetails, setDisplayDetails] = useState(false)
 
   const handleDisplay = () => {
-    setDisplayDetails(!displayDetails);
-  };
+    setDisplayDetails((prevDisplay) => !prevDisplay)
+  }
 
   return (
     <>
-      <div className="country-item">
-        <div className="list-text">{data.name.common}</div>
-          <button className="list-button" onClick={handleDisplay}>
-            {displayDetails ? <FaMinus /> : <FaPlus />}
-          </button>
+      <div className='country-item'>
+        <div className='list-text'>{name.common}</div>
+        <button className='list-button' onClick={handleDisplay}>
+          {displayDetails ? <FaMinus size={15} /> : <FaPlus size={15} />}
+        </button>
       </div>
-      <div className="country-details-container">
+      <div className='country-details-container'>
         {displayDetails && (
           <CountryDetails
-            key={data.ccn3}
-            name={data.name.common}
-            capital={data.capital}
-            languages={data.languages}
-            flag={data.flag}
-            region={data.region}
-            subregion={data.subregion}
-            area={data.area}
-            population={data.population}
-            borders={data.borders}
+            key={ccn3}
+            name={name.common}
+            capital={capital}
+            languages={languages}
+            flag={flag}
+            region={region}
+            subregion={subregion}
+            area={area}
+            population={population}
+            borders={borders}
           />
         )}
       </div>
     </>
-  );
-};
+  )
+}
