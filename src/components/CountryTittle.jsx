@@ -1,11 +1,11 @@
-import "../styles/CountryTittle.css"
+import '../styles/CountryTittle.css'
 
 export const CountryTittle = ({ name, flag }) => {
   return (
-    <div className="country-tittle">
+    <div className='country-tittle'>
       <h3>
         {name} <span>{flag}</span>
       </h3>
     </div>
-  );
-};
+  )
+}
