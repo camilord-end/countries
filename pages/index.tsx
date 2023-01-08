@@ -1,13 +1,24 @@
 import Head from 'next/head'
-import type { FC } from 'react'
+import { useContext } from 'react'
+
+import { IconButton } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
+
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 
 import { Inter } from '@next/font/google'
+import { ColorModeContext } from '../utils/ColorModeContext'
+import { SearchInput } from '../components/SearchInput'
+import axios from 'axios'
 
 const inter = Inter({
   subsets: ['latin']
 })
-
-const Home: FC = () => {
+// @ts-ignore
+const Home = ({ data }) => {
+  const theme = useTheme()
+  const colorMode = useContext(ColorModeContext)
   return (
     <>
       <Head>
@@ -21,10 +32,34 @@ const Home: FC = () => {
       </Head>
       <main className={inter.className}>
         <h1>Countries DB</h1>
-        <p>somesomeomsosm</p>
+        <IconButton
+          sx={{ ml: 1 }}
+          onClick={colorMode.toggleColorMode}
+          color='inherit'
+        >
+          {theme.palette.mode === 'dark' ? (
+            <Brightness7Icon />
+          ) : (
+            <Brightness4Icon />
+          )}
+        </IconButton>
+        <SearchInput data={data} />
       </main>
     </>
   )
 }
 
 export default Home
+
+export const getStaticProps = async () => {
+  const res = await axios.get('https://restcountries.com/v3.1/all')
+  const data = res.data
+  if (!res) {
+    return {
+      notFound: true
+    }
+  }
+  return {
+    props: { data }
+  }
+}
